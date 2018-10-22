@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+		<style type="text/css">
+			@media (min-width: 1024px) {
+				#mainlayout {
+					margin: 4rem auto;
+					border: #000000 solid 1px;
+					width: 40%;
+				}
+			}
+			
+			@media (min-width: 992px) and(max-width:1024px) {
+				#mainlayout {
+					margin: 0 auto;
+					border: #000000 solid 1px;
+					width: 60%;
+				}
+			}
+			
+			@media (max-width:768px) {
+				#mainlayout {
+					margin: 0 auto;
+					border: #000000 solid 1px;
+					width: 95%;
+				}
+			}
+			
+			.flex {
+				display: flex;
+				padding: 0;
+				font-size: 80%;
+			}
+			
+			.flex .div_column {
+				text-align: center;
+				flex: 1 1 25%;
+				margin-left: 3px;
+			}
+			
+			.flex .div_column_row {
+				margin-bottom: 1rem;
+				margin-top: 1rem;
+			}
+			
+			.flex .div_column_row input {
+				width: 90%;
+				height: 3rem;
+			}
+			
+			.div_input {
+				width: 95%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			#input_display {
+				margin-top: 0.5rem;
+				height: 4rem;
+			}
+			/*.div_append
+			{
+				display: none;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div id="mainlayout">
+			<div class="div_input">
+				<input type="text" style="width: 100%;" id="input_display">
+			</div>
+			<div class="flex" id="oper">
+			</div>
+			<div id="div_append" class="flex">
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var column1 = [{
+				"value": "1",
+				"id": "input_1",
+			},
+			{
+				"value": "4",
+				"id": "input_4",
+			},
+			{
+				"value": "7",
+				"id": "input_7",
+			},
+			{
+				"value": "0",
+				"id": "input_0",
+			},
+		];
+		var column2 = [{
+				"value": "2",
+				"id": "input_2",
+			},
+			{
+				"value": "5",
+				"id": "input_5",
+			},
+			{
+				"value": "8",
+				"id": "input_8",
+			},
+			{
+				"value": "0",
+				"id": "input_0",
+			},
+		];
+		var column3 = [{
+				"value": "3",
+				"id": "input_3",
+			},
+			{
+				"value": "6",
+				"id": "input_6",
+			},
+			{
+				"value": "9",
+				"id": "input_9",
+			},
+			{
+				"value": ".",
+				"id": "input_point",
+			},
+		];
+		var column4 = [{
+				"value": "=",
+				"id": "input_equal",
+			},
+			{
+				"value": "Back",
+				"id": "input_back",
+			},
+			{
+				"value": "C",
+				"id": "input_c",
+			},
+			{
+				"value": "附加",
+				"id": "input_append",
+			},
+		];
+		var column5 = [{
+				"value": "+",
+				"id": "input_add",
+			},
+			{
+				"value": "-",
+				"id": "input_sub",
+			},
+			{
+				"value": "*",
+				"id": "input_multi",
+			},
+			{
+				"value": "/",
+				"id": "input_div",
+			},
+		];
+		var column6 = [{
+			"value": "!",
+			"id": "input_factorial",
+		}, ];
+		var column7 = [{
+			"value": "M-",
+			"id": "input_msub",
+		}, ];
+		var column8 = [{
+			"value": "M+",
+			"id": "input_mplus",
+		}, ];
+		var uidata = [column1, column2, column3, column4, column5];
+		var uiappenddata = [column6, column7, column8];
+		$(document).ready(function() {
+			var content = "";
+			content = createHTML(uidata);
+			$("#oper").append(content);
+			content = createHTML(uiappenddata);
+			$("#div_append").append(content);
+			$("#div_append").css("display", "none");
+		});
+
+		function cal(id) {
+			if(isExitEqual()) {
+				document.getElementById('input_display').value = "";
+				return;
+			}
+			switch(id) {
+				case "input_c":
+					document.getElementById('input_display').value = "";
+					break;
+				case "input_add":
+				case "input_sub":
+				case "input_div":
+				case "input_multi":
+					var msg = " " + document.getElementById(id).value + " ";
+					document.getElementById('input_display').value += msg;
+					break;
+				case "input_equal":
+					var msg = " " + document.getElementById(id).value + " ";
+					document.getElementById('input_display').value += msg;
+					calculate(document.getElementById('input_display').value);
+					break;
+				case "input_back":
+					var val = document.getElementById('input_display').value;
+					val = val.substring(0, val.length - 1);
+					document.getElementById('input_display').value = val;
+					break;
+				case "input_append":
+					$("#div_append").css("display", "flex");
+					break;
+				default:
+					document.getElementById('input_display').value += document.getElementById(id).value;
+			}
+		}
+
+		function calculate(strCal) {
+			var calArr = [];
+			var m = strCal.split(" ");
+			var currval;
+			for(var i = 0; i < m.length; i++) {
+				switch(m[i]) {
+					case "-":
+						currval = 0 - m[++i];
+						calArr.push(currval)
+						break;
+					case "*":
+						preVal = calArr.pop();
+						currval = preVal * m[++i];
+						calArr.push(currval)
+						break;
+					case "/":
+						preVal = calArr.pop();
+						currval = preVal / m[++i];
+						calArr.push(currval)
+						break;
+					default:
+						if(isNumber(m[i])) {
+							calArr.push(m[i]);
+						}
+				}
+			}
+			var sum = 0;
+			calArr.forEach(function(val) {
+				sum += parseFloat(val);
+			});
+			document.getElementById('input_display').value += sum;
+		}
+
+		function isNumber(obj) {
+			return !isNaN(parseFloat(obj)) && isFinite(obj);
+		}
+
+		function isExitEqual() {
+			var currval = document.getElementById('input_display').value;
+			if(currval.indexOf("=") != -1) {
+				return true;
+			} else {
+				return false
+			}
+		}
+
+		function createHTML(data) {
+			var content = "";
+			for(var i = 0; i < data.length; i++) {
+				content += "<div class=\"div_column\">";
+				for(var j = 0; j < data[i].length; j++) {
+					content += "<div class=\"div_column_row\">";
+					content += "<input class=\"btn btn-default\" id=\"" + data[i][j].id + "\" type=\"button\" value=\"" + data[i][j].value + "\" onclick=\"cal(this.id)\" />";
+					content += "</div>";
+				}
+				content += "</div>";
+			}
+			return content;
+		}
+	</script>
+
+</html>

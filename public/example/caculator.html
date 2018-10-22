@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.flex {
+				display: flex;
+				width: 40%;
+				margin: 0 auto;
+				padding: 0;
+				font-size: 80%;
+			}
+			
+			.flex .div_column {
+				text-align: center;
+				flex: 1 1 25%;
+				margin-left: 3px;
+			}
+			
+			.flex .div_column_row {
+				margin-bottom: 1rem;
+				margin-top: 1rem;
+			}
+			
+			.flex .div_column_row input {
+				width: 90%;
+				height: 20px;
+			}
+			
+			.div_input {
+				width: 40%;
+				margin: 0 auto;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="div_input">
+			<input type="text" style="width: 100%;" id="input_display">
+		</div>
+		<div class="flex">
+			<div class="div_column">
+				<div class="div_column_row">
+					<input id="input_1" type="button" value="1" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_4" type="button" value="4" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_7" type="button" value="7" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_0" type="button" value="0" onclick="cal(this.id)" />
+				</div>
+			</div>
+			<div class="div_column">
+				<div class="div_column_row">
+					<input id="input_2" type="button" value="2" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_5" type="button" value="5" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_8" type="button" value="8" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_point" type="button" value="." onclick="cal(this.id)" />
+				</div>
+			</div>
+			<div class="div_column">
+				<div class="div_column_row">
+					<input id="input_3" type="button" value="3" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_6" type="button" value="6" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_9" type="button" value="9" onclick="cal(this.id)" />
+				</div>
+			</div>
+			<div class="div_column">
+				<div class="div_column_row">
+					<input id="input_equal" type="button" value="=" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_back" type="button" value="Back" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_c" type="button" value="C" onclick="cal(this.id)" />
+				</div>
+			</div>
+			<div class="div_column">
+				<div class="div_column_row">
+					<input id="input_add" type="button" value="+" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_sub" type="button" value="-" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_multi" type="button" value="*" onclick="cal(this.id)" />
+				</div>
+				<div class="div_column_row">
+					<input id="input_div" type="button" value="/" onclick="cal(this.id)" />
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function cal(id) {
+			if(isExitEqual()) {
+				document.getElementById('input_display').value = "";
+				return;
+			}
+			switch(id) {
+				case "input_c":
+					document.getElementById('input_display').value = "";
+					break;
+				case "input_add":
+				case "input_sub":
+				case "input_div":
+				case "input_multi":
+					var msg = " " + document.getElementById(id).value + " ";
+					document.getElementById('input_display').value += msg;
+					break;
+				case "input_equal":
+					var msg = " " + document.getElementById(id).value + " ";
+					document.getElementById('input_display').value += msg;
+					calculate(document.getElementById('input_display').value);
+					break;
+				case "input_back":
+					var val = document.getElementById('input_display').value;
+					val = val.substring(0, val.length - 1);
+					document.getElementById('input_display').value = val;
+					break;
+				default:
+					document.getElementById('input_display').value += document.getElementById(id).value;
+			}
+		}
+
+		function calculate(strCal) {
+			var calArr = [];
+			var m = strCal.split(" ");
+			var currval;
+			for(var i = 0; i < m.length; i++) {
+				switch(m[i]) {
+					case "-":
+						currval = 0 - m[++i];
+						calArr.push(currval)
+						break;
+					case "*":
+						preVal = calArr.pop();
+						currval = preVal * m[++i];
+						calArr.push(currval)
+						break;
+					case "/":
+						preVal = calArr.pop();
+						currval = preVal / m[++i];
+						calArr.push(currval)
+						break;
+					default:
+						if(isNumber(m[i])) {
+							calArr.push(m[i]);
+						}
+				}
+			}
+			var sum = 0;
+			calArr.forEach(function(val) {
+				sum += parseFloat(val);
+			});
+			document.getElementById('input_display').value += sum;
+		}
+
+		function isNumber(obj) {
+			return !isNaN(parseFloat(obj)) && isFinite(obj);
+		}
+
+		function isExitEqual() {
+			var currval = document.getElementById('input_display').value;
+			if(currval.indexOf("=") != -1) {
+				return true;
+			} else {
+				return false
+			}
+		}
+	</script>
+
+</html>

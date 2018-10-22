@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* ---------------- rest ------------------------- */
+        ul,ol,div,p,html,body,h1{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        ul,ol {
+            list-style:none;
+        }
+        table,
+        table tr td,
+        table tr th {
+            border:1px solid black;
+        }
+        table{
+            border-collapse:collapse;
+        }
+
+        /* ******* general ******* */
+        .container{
+            width:80%;
+            margin:0 auto;
+        }
+        .title {
+            text-align: center;
+            font-size: 18px;
+        }
+        .order-list .list-item {
+            display:inline-block;
+            margin-right:30px;
+        }
+        .order-list .list-item strong {
+            margin-right:8px;
+        }
+        .order-table {
+            width:100%;
+        }
+        .order-table td{
+            width:16.666%;
+            text-indent:1em;
+            font-weight:600;
+        }
+        .tail-list .list-item {
+            display:inline-block;
+            width:33%;
+        }
+        .comments,
+        .tail-list,
+        .order-table,
+        .order-list {
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <h1 class="title">绵阳市高水农副产品批发有限公司销售单</h1>
+            <ul class="order-list">
+                <li class="list-item"><strong>配送时间</strong> 2018/02/04</li>
+                <li class="list-item"><strong>订单编号</strong> XS201801260007</li>
+                <li class="list-item"><strong>客户名称</strong> 实验中学</li>
+            </ul>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>品名</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>小鸡腿</td>
+                        <td>件</td>
+                        <td>2</td>
+                        <td>177</td>
+                        <td>154</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>小鸡腿</td>
+                        <td>件</td>
+                        <td>16</td>
+                        <td>177</td>
+                        <td>2832</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>精肉</td>
+                        <td>斤</td>
+                        <td>300</td>
+                        <td>11.5</td>
+                        <td>3450</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>五花肉</td>
+                        <td>斤</td>
+                        <td>30</td>
+                        <td>13</td>
+                        <td>190</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>青椒</td>
+                        <td>斤</td>
+                        <td>230</td>
+                        <td>2.6</td>
+                        <td>598</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>小葱</td>
+                        <td>斤</td>
+                        <td>30</td>
+                        <td>2.7</td>
+                        <td>81</td>
+                    </tr>        
+                </tbody>
+            </table>
+            <p class="comments">备注:</p>
+            <ul class="tail-list">
+                <li class="list-item">送货人</li>
+                <li class="list-item">收货人</li>
+                <li class="list-item">第1页共2页</li>
+            </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!--本例子主要是绘制满减和以旧换新的图标-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+	<style>
+		.span_text {
+			padding-top: 0px;
+			padding-left: 10px;
+			padding-bottom: 0px;
+			padding-right: 10px;
+			color: #df3033;
+			font-size: 12px;
+		}
+		.div_quan_item {
+			position: relative;
+			float: left;
+			height: 18px;
+			padding-left: 2px;
+			line-height: 12px;
+			text-align: center;
+			border-top: 1px solid #df3033;
+			border-bottom: 1px solid #df3033;
+			background: #ffdedf;
+			font-size: 14px;
+			white-space: nowrap;
+			margin-right: 13px;
+			cursor: pointer;
+		}
+		
+		.span_oldnew {
+			position: relative;
+			z-index: -1;
+			display: inline-block;
+			border: 1px solid #ced2e6;
+			line-height: 16px;
+			border-radius: 8px;
+			padding: 0 5px 0 18px;
+			color: #5e69ad;
+			margin-left: -20px;
+			margin-top: 2px;
+		}
+		
+		.div_quan_item s {
+			position: absolute;
+			top: -1px;
+			display: block;
+			height: 18px;
+			width: 2px;
+			left: 0px;
+			overflow: hidden;
+			background: url("img/quan-arr.gif") no-repeat;
+		}
+		
+		.i_sprit {
+			width: 16px;
+			height: 16px;
+			background-position: -32px 0;
+			display: inline-block;
+			vertical-align: -4px;
+			background-image: url("img/__sprite.png");
+		}
+		
+		.div_quan_item b {
+			right: -2px;
+			position: absolute;
+			top: -1px;
+			display: block;
+			height: 18px;
+			width: 2px;
+			overflow: hidden;
+			background: url("img/quan-arr.gif") no-repeat;
+		}
+		
+		li {
+			list-style: none;
+			margin-right: 10px;
+			float: left;
+		}
+	</style>
+
+	<body>
+		<span class="div_quan_item">
+			<b></b>
+			<s></s>
+			<span class="span_text">满3000减300</span>
+		</span>
+		<ul>
+			<li>
+				<i class="i_sprit"></i>
+				<span class="span_oldnew">以旧换新</span>
+			</li>
+		</ul>
+	</body>
+
+</html>

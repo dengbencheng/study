@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+	</head>
+	<style>
+		.flex {
+			display: flex;
+			width: 100%;
+			margin: 0 auto;
+			padding: 0;
+			font-size: 80%;
+		}
+		
+		.flex .div_column {
+			text-align: center;
+			flex: 1 1 33%;
+			margin-left: 3px;
+		}
+		
+		.flex a {
+			text-decoration: none;
+			color: lightsteelblue;
+		}
+		
+		.flex .div_column ul {
+			list-style: none;
+			line-height: 40px;
+			padding-left: 0px;
+		}
+		
+		.span_btn {
+			width: 7rem;
+			display: block;
+			border-radius: 1rem;
+			border: solid rgb(216,216,216) 2px;
+			padding-top: 0.8rem;
+			padding-bottom: 0.8rem;
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+			color:rgb(109,82,82);
+			font-size: 1.2rem;
+			margin: 0 auto;
+		}
+		
+		.div_ad_content {
+			height: 270px;
+		}
+		
+		.span_title {
+			display: block;
+			margin-top:92px;
+			font-size: 1.6rem;
+			margin-bottom: 10%;
+		}
+		
+		.span_coin {
+			font-size: 2rem;
+		}
+		
+		.span_num {
+			font-size: 2.5rem;
+			color: red;
+		}
+		.div_column_red
+		{
+			background-image: url("img/mask.png");
+			background-repeat: no-repeat;
+			background-position-x: 40%;
+			text-align: center;
+			flex: 1 1 33%;
+			margin-left: 3px;
+			background-color: rgb(240,86,56);
+			color:white;
+			height: 600px;
+			border-radius: 1rem;
+		}
+		.div_column_red ul {
+			list-style: none;
+			line-height: 40px;
+			padding-left: 0px;
+		}
+		.div_column_red .span_num {
+			font-size: 2.5rem;
+			color: white;
+		}
+		.div_column_red .span_btn
+		{
+			width: 7rem;
+			display: block;
+			border-radius: 1rem;
+			border: solid rgb(255,200,10) 1px;
+			padding-top: 0.8rem;
+			padding-bottom: 0.8rem;
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+			background-color: rgb(255,200,10);
+			color:rgb(255,255,255);
+			font-size: 1.2rem;
+			margin: 0 auto;
+		}
+		
+		
+	</style>
+
+	<body>
+		<div>
+			<div class="flex">
+				<div class="div_column">
+					<span class="span_title">免费版</span>
+					<div>
+						<span class="span_coin">¥</span>
+						<span class="span_num">0</span>
+						<span>/年</span>
+					</div>
+					<div class="div_ad_content">
+						<ul>
+							<li>5人成员上限</li>
+							<li>5G容量</li>
+							<li>单文件最大100M</li>
+							<li>单项目最大1G</li>
+							<li>社区与邮件支持</li>
+							<li> </li>
+						</ul>
+					</div>
+					<div>
+						<a href="#"><span class="span_btn">免费使用</span></a>
+					</div>
+				</div>
+				<div class="div_column_red">
+					<span class="span_title">标准版</span>
+					<div>
+						<span class="span_coin">¥</span>
+						<span class="span_num">1998</span>
+						<span>/年</span>
+					</div>
+					<div class="div_ad_content">
+						<ul>
+							<li>20人成员上限</li>
+							<li>20G容量</li>
+							<li>单文件最大100M</li>
+							<li>单项目最大1G</li>
+							<li>社区与邮件支持在线与电话支持</li>
+							<li>短信通知</li>
+						</ul>
+					</div>
+					<div>
+						<a href="#"><span class="span_btn">购买</span></a>
+					</div>
+				</div>
+				<div class="div_column">
+					<span class="span_title">高级版</span>
+					<div>
+						<span class="span_coin">¥</span>
+						<span class="span_num">3998</span>
+						<span>/年</span>
+					</div>
+					<div class="div_ad_content">
+						<ul>
+							<li>50人成员上限</li>
+							<li>50G容量</li>
+							<li>单文件最大200M</li>
+							<li>单项目最大2G</li>
+							<li>社区与邮件支持在线与电话支持</li>
+							<li>短信通知</li>
+						</ul>
+					</div>
+					<div>
+						<a href="#"><span class="span_btn">购买</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
